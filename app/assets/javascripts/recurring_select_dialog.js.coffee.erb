@@ -130,11 +130,14 @@ window.RecurringSelectDialog =
       section.find("input[name=monthly_rule_type]").on "change", @toggle_month_view
       
       @current_rule.hash.validations.day_of_month = [1]
-      monthly_calendar = section.find(".rs_calendar_day").find("a").first().addClass("selected")
-      @summary.addClass "fetching"
-      @save_button.addClass("disabled")
-      @summary.find("span").html ""
-      @summaryFetch()
+      monthly_calendar = section.find(".rs_calendar_day")
+      firstDayLink = monthly_calendar.find("a").first()
+      if firstDayLink?
+        firstDayLink.addClass("selected")
+        @summary.addClass "fetching"
+        @save_button.addClass("disabled")
+        @summary.find("span").html ""
+        @summaryFetch()
       
       section.show()
 
