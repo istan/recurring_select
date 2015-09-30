@@ -128,6 +128,11 @@ window.RecurringSelectDialog =
       section.find(".monthly_rule_type_day").prop("checked", !in_week_mode)
       @toggle_month_view()
       section.find("input[name=monthly_rule_type]").on "change", @toggle_month_view
+      
+      @current_rule.hash.validations.day_of_month = raw_days.get()
+      monthly_calendar = section.find(".rs_calendar_day").find("a").first().addClass("selected")
+      @summaryUpdate()
+      
       section.show()
 
     initYearlyOptions: ->
