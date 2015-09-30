@@ -131,7 +131,10 @@ window.RecurringSelectDialog =
       
       @current_rule.hash.validations.day_of_month = 1
       monthly_calendar = section.find(".rs_calendar_day").find("a").first().addClass("selected")
-      @summaryUpdate()
+      @summary.addClass "fetching"
+      @save_button.addClass("disabled")
+      @summary.find("span").html ""
+      @summaryFetch()
       
       section.show()
 
